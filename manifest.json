@@ -4,7 +4,7 @@
   "name": "Block The Rich",
   "version": "1.0",
   "icons": {
-    "48": "icons/blocktherich-on-96.png"
+    "96": "icons/blocktherich-on-96.png"
   },
   "permissions": [
     "activeTab",
