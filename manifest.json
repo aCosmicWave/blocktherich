@@ -1,0 +1,28 @@
+{
+  "description": "Like an ad-blocker, but for obscenely wealthy people with overinflated egos!",
+  "manifest_version": 2,
+  "name": "Block The Rich",
+  "version": "1.0",
+  "icons": {
+    "48": "icons/blocktherich-on-96.png"
+  },
+  "permissions": [
+    "activeTab",
+    "webRequest",
+    "webRequestBlocking",
+    "https://*/*"
+  ],
+  "browser_action": {
+    "default_icon": "icons/blocktherich-on-96.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*/*"
+      ],
+      "js": [
+        "blocktherich.js"
+      ]
+    }
+  ]
+}
