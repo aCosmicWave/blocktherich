@@ -64,21 +64,7 @@ function isRichUrl(url) {
 }
 
 function blurNode(node) {
-    if (!node.style.filter.includes("blur")) {
-        node.style.filter = "blur(1.5rem)";
-    }
-}
-
-function addLogo(node) {
-    const image = document.createElement('img');
-    image.src = browser.extension.getURL('icons/blocktherich-on-32.png');
-    image.style.width = "16px";
-    image.style.height = "16px";
-    image.addEventListener('click', () => {
-        node.style.filter = "blur(0rem)";
-        image.style = "display:none";
-    });
-    node.parentNode.insertBefore(image, node);
+    node.style.filter = "blur(1.5rem)";
 }
 
 function createObserver() {
