@@ -1,4 +1,18 @@
-const richAlias = ["kardashian", "michael bloomberg", "michael rubens bloomberg", "steve ballmer", "steven anthony ballmer", "sergey brin", "sergey mikhailovich brin", "buffett", "warren buffett", "warren edward buffett", "larry page", "lawrence edward page", "donald trump", "donald j. trump", "donald john trump", "trump", "elon musk", "musk", "elon reeve musk", "kanye west", "kanye", "ye west", "kanye omari west", "mark zuckerburg", "mark elliot zuckerberg", "zuck", "jeff bezos", "bezos", "larry ellison", "lawrence joseph ellison", "bill gates", "william henry gates iii"];
+const blackList = {
+    ballmer: ["steve ballmer", "steven anthony ballmer"],
+    bezos: ["bezos", "jeff bezos"],
+    bloomberg: ["michael bloomberg", "michael rubens bloomberg"],
+    brin: ["sergey brin", "sergey mikhailovich brin"],
+    buffett: ["buffett", "warren buffett", "warren edward buffett"],
+    ellison: ["larry ellison", "lawrence joseph ellison"],
+    gates: ["bill gates", "william henry gates iii"],
+    kanye: ["kanye", "kanye west", "ye west", "kanye omari west"],
+    musk: ["musk", "elon musk", "elon reeve musk"],
+    page: ["larry page", "lawrence edward page"],
+    trump: ["trump", "donald trump", "donald j. trump", "donald john trump"],
+    zuck: ["zuck", "zuckerberg", "mark zuckerberg", "mark elliot zuckerberg"]
+}
+
 
 createObserver();
 
@@ -42,11 +56,13 @@ function findRichNode(node) {
 
 function isRich(element) {
     let hasMatch = false;
-    richAlias.forEach(alias => {
-        if (new RegExp("(^|(\\.|,|\\s)+)" + alias + "((,|\\.|\\s|s|\\’s|\\?|\\')+|$)", "ig").test(element)) {
-            hasMatch = true;
-            return;
-        }
+    Object.keys(blackList).forEach(person => {
+        blackList[person].forEach(alias => {
+            if (new RegExp("(^|(\\.|,|\\s|\“)+)" + alias + "((,|\\.|\\s|s|\\’s|\\?|\\'|\“)+|$)", "ig").test(element)) {
+                hasMatch = true;
+                return;
+            }
+        });
     });
     return hasMatch;
 }
@@ -54,11 +70,13 @@ function isRich(element) {
 function isRichUrl(url) {
     let hasMatch = false;
     let urlPath = url.split("?")[0].toLowerCase();
-    richAlias.forEach(alias => {
-        if (urlPath.includes(alias)) {
-            hasMatch = true;
-            return;
-        }
+    Object.keys(blackList).forEach(person => {
+        blackList[person].forEach(alias => {
+            if (urlPath.includes(alias)) {
+                hasMatch = true;
+                return;
+            }
+        });
     });
     return hasMatch;
 }
