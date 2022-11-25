@@ -8,8 +8,6 @@
   },
   "permissions": [
     "activeTab",
-    "webRequest",
-    "webRequestBlocking",
     "https://*/*"
   ],
   "browser_action": {
