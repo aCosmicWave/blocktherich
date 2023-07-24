@@ -8,10 +8,16 @@
   },
   "permissions": [
     "activeTab",
-    "https://*/*"
+    "https://*/*",
+    "storage"
   ],
   "browser_action": {
     "default_icon": "icons/blocktherich-on-96.png"
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
   },
   "content_scripts": [
     {
