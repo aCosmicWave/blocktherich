@@ -2,7 +2,7 @@
   "description": "Like an ad-blocker, but for obscenely wealthy people with overinflated egos!",
   "manifest_version": 2,
   "name": "Block The Rich",
-  "version": "1.0",
+  "version": "1.0.2",
   "icons": {
     "96": "icons/blocktherich-on-96.png"
   },
