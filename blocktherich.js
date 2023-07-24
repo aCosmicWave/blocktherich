@@ -13,12 +13,18 @@ const blackList = {
     zuck: ["zuck", "zuckerberg", "mark zuckerberg", "mark elliot zuckerberg"]
 }
 
+browser.storage.local.get("status")
+    .then((result) => {
+        let statusValue = result.status;
+        if (statusValue == null || statusValue == true) {
+            createObserver();
 
-createObserver();
-
-if (isRich(document.body.textContent)) {
-    findRichNode(document.body);
-}
+            if (isRich(document.body.textContent)) {
+                findRichNode(document.body);
+            }
+        }
+    }
+    );
 
 function findRichNode(node) {
     if (node.hasChildNodes()) {
@@ -86,6 +92,7 @@ function blurNode(node) {
 }
 
 function createObserver() {
+
     const observer = new MutationObserver((mutations) => {
         mutations.forEach((mutation) => {
             if (mutation.addedNodes && mutation.addedNodes.length > 0) {
