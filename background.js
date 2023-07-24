@@ -28,4 +28,6 @@ function saveStatus(value) {
 
 browser.runtime.onInstalled.addListener(() => { saveStatus(true); });
 
+browser.runtime.onStartup.addListener(() => { saveStatus(true); });
+
 browser.browserAction.onClicked.addListener(handleClick);
