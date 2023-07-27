@@ -26,6 +26,9 @@
       ],
       "js": [
         "blocktherich.js"
+      ],
+      "css": [
+        "blocktherich.css"
       ]
     }
   ]
